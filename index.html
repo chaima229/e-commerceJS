@@ -12,7 +12,99 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<style>
+  .texter{
+    text-align: center;
+  }
+  .h6{
+    text-align: center;
+  }
+  .addToCart {
+            background-color: #1c1d1c;
+            border: none;
+            color: rgb(233, 228, 228);
+            padding: 8px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.7rem;
+            /* margin-top: 10px; */
+            cursor: pointer;
+            border-radius: 12px;
+        }
+    .addToCart:hover{
+      background-color: rgb(234, 231, 231);
+      color: rgb(238, 11, 170);
+    }
+        .cart-dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
+        .cart-icon {
+            font-size: 17px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            width: 16rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .cart-item img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+
+        .total-price {
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+
+
+        /* l'image du carte et le boutton  */
+        .img-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(220, 216, 216, 0.5); /* Fond semi-transparent noir */
+    display: none;
+}
+
+.img-box:hover .overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-details {
+    background: #eb6565;
+    color: #333;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+        
+</style>
   <title>
     Giftos
   </title>
@@ -74,9 +166,22 @@
                 Login
               </span>
             </a>
-            <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            </a>
+            
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <div class="cart-dropdown">
+                  <span class="cart-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                  </span>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul id="cart-list" class="list-group">
+                      <!-- Le contenu du panier sera affiché ici -->
+                    </ul>
+                    <div class="total-price">Total: $0.00</div>
+                  </div>
+                </div>
+              </li>
+            </ul>
             <form class="form-inline ">
               <button class="btn nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -208,223 +313,21 @@
           </div>
         </div>
         <label class="text-black-50">Filtrer par: &nbsp; </label>
-        <select class="form-select " aria-label="Default select example" id="category" onchange="filtrer()">
-        <option selected value="all">Tout les categories</option>
-        <option value="Ring">Ring</option>
-        <option value="watch">watch</option>
-        <option value="flower">flower</option>
-        <option value="teddy">teddy</option>
+       
+      <select class="form-select" aria-label="Default select example" id="category" onchange="filtrer()">
+        <!-- Options seront ajoutées dynamiquement ici -->
       </select>
+
       
       </div>
       
       
       
       <div class="row" id="elements">
-        
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="Ring">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p1.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $200
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="watch">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="teddy">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="flower">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="teddy">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p5.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Teddy Bear
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="flower">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p6.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Flower Bouquet
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="watch">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Watch
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="element col-sm-6 col-md-4 col-lg-3" data-category="Ring">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/p8.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="shop.html">
           View All Products
         </a>
       </div>
@@ -990,7 +893,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script src="js/custom.js"></script>
-
+<!-- <button class="addToCart btn btn-success" onclick="addToCart(${product.id})">Add to Cart</button> -->
 </body>
 
 </html>
